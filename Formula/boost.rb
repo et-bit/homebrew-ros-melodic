@@ -31,14 +31,8 @@ class Boost < Formula
 
   deprecated_option "with-icu" => "with-icu4c"
 
-  if build.cxx11?
-    depends_on "icu4c" => [:optional, "c++11"]
-  else
-    depends_on "icu4c" => :optional
-  end
-
-  needs :cxx11 if build.cxx11?
-
+  depends_on "icu4c" => :optional
+  
   # fix error: no member named 'make_array' in namespace 'boost::serialization'
   # https://svn.boost.org/trac/boost/ticket/12978
   patch :p2 do
